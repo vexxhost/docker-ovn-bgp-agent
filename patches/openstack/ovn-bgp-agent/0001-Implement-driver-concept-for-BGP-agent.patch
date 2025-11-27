@@ -32,9 +32,9 @@ index df41618..4f9155c 100644
 --- a/ovn_bgp_agent/config.py
 +++ b/ovn_bgp_agent/config.py
 @@ -66,6 +66,9 @@ agent_opts = [
-                choices=('ovn_bgp_driver', 'ovn_evpn_driver',
-                         'ovn_stretched_l2_bgp_driver', 'nb_ovn_bgp_driver'),
-                default='ovn_bgp_driver'),
+               choices=('ovn_bgp_driver', 'ovn_evpn_driver',
+                        'ovn_stretched_l2_bgp_driver', 'nb_ovn_bgp_driver'),
+               default='ovn_bgp_driver'),
 +    cfg.StrOpt('bgp_driver',
 +               help='BGP Driver to be used for exposing/witdrawing routes',
 +               default='frr'),
@@ -477,6 +477,8 @@ index 5f82583..3b3aea4 100644
 -    vrf_config = vrf_template.render(**opts)
 -
 -    _run_vtysh_config_with_tempfile(vrf_config)
++        DEFAULT_REDISTRIBUTE.clear()
++        DEFAULT_REDISTRIBUTE.update(redist_opts)
 diff --git a/ovn_bgp_agent/tests/unit/drivers/openstack/test_nb_ovn_bgp_driver.py b/ovn_bgp_agent/tests/unit/drivers/openstack/test_nb_ovn_bgp_driver.py
 index 3d3809e..09f2f92 100644
 --- a/ovn_bgp_agent/tests/unit/drivers/openstack/test_nb_ovn_bgp_driver.py
@@ -782,3 +784,4 @@ index c475b49..ebc069f 100644
      ovnbgpagent = ovn_bgp_agent.config:list_opts
 -- 
 2.34.1
+
