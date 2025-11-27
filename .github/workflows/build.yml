@@ -16,12 +16,12 @@ jobs:
       id-token: write
       packages: write
     steps:
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@2024.2
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
           repository: openstack/ovn-bgp-agent
           ref: ace144ccfb08001ace88b26f7634e1d914e396d2
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@2024.2
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
         with:
           image-name: ovn-bgp-agent
           build-contexts: ovn-bgp-agent=openstack/ovn-bgp-agent
