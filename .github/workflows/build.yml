@@ -19,7 +19,7 @@ jobs:
       - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
           repository: openstack/ovn-bgp-agent
-          ref: 36746cf1c18720e4a9ef45f779cd53c5a412bd6c
+          ref: fe0d730b960dd9d0b6731a81bea148b36e63af8d
 
       - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
         with:
