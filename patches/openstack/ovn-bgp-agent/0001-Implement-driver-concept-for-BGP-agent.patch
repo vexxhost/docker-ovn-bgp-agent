@@ -32,9 +32,9 @@ index df41618..4f9155c 100644
 --- a/ovn_bgp_agent/config.py
 +++ b/ovn_bgp_agent/config.py
 @@ -66,6 +66,9 @@ agent_opts = [
-               choices=('ovn_bgp_driver', 'ovn_evpn_driver',
-                        'ovn_stretched_l2_bgp_driver', 'nb_ovn_bgp_driver'),
-               default='ovn_bgp_driver'),
+                choices=('ovn_bgp_driver', 'ovn_evpn_driver',
+                         'ovn_stretched_l2_bgp_driver', 'nb_ovn_bgp_driver'),
+                default='ovn_bgp_driver'),
 +    cfg.StrOpt('bgp_driver',
 +               help='BGP Driver to be used for exposing/witdrawing routes',
 +               default='frr'),
