@@ -593,7 +593,7 @@ diff --git a/setup.cfg b/setup.cfg
 index 2665bdd..b93a9ab 100644
 --- a/setup.cfg
 +++ b/setup.cfg
-@@ -44,5 +44,10 @@ ovn_bgp_agent.drivers =
+@@ -44,6 +44,11 @@ ovn_bgp_agent.drivers =
  
  ovn_bgp_agent.routing_drivers =
      frr = ovn_bgp_agent.drivers.openstack.utils.frr:FRRDriver
@@ -616,3 +616,4 @@ index 9472f33..f0f7c0f 100644
 +kubernetes>=24.2.0 # Apache-2.0
 -- 
 2.51.0
+
