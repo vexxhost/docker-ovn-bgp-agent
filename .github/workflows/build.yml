@@ -1,0 +1,28 @@
+name: build
+
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - stable/**
+
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
+    steps:
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
+        with:
+          repository: openstack/ovn-bgp-agent
+          ref: 36746cf1c18720e4a9ef45f779cd53c5a412bd6c
+
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
+        with:
+          image-name: ovn-bgp-agent
+          build-contexts: ovn-bgp-agent=openstack/ovn-bgp-agent
+          push: ${{ github.event_name != 'pull_request' }}
