@@ -25,10 +25,15 @@ jobs:
         startsWith(github.event.comment.body, '/backport')
       )
     steps:
-      - uses: actions/checkout@v4
+      - uses: wayfair-incubator/forker@eaae6dcbfb2c4724319ccee5beb89122414e6c69 # main
         with:
           token: ${{ secrets.VEXXHOST_BOT_PAT }}
-      - uses: korthout/backport-action@436145e922f9561fc5ea157ff406f21af2d6b363 # v3.2.0
+          repo: ${{ github.event.repository.name }}
+          owner: ${{ github.event.repository.owner.login }}
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          token: ${{ secrets.VEXXHOST_BOT_PAT }}
+      - uses: korthout/backport-action@d07416681cab29bf2661702f925f020aaa962997 # v3.4.1
         with:
           github_token: ${{ secrets.VEXXHOST_BOT_PAT }}
           copy_labels_pattern: skip-release-notes
