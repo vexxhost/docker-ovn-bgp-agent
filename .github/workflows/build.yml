@@ -15,6 +15,7 @@ jobs:
       contents: read
       id-token: write
       packages: write
+      pull-requests: write
     steps:
       - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
         with:
