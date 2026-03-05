@@ -8,6 +8,9 @@ on:
       - main
       - stable/**
 
+permissions:
+  contents: read
+
 jobs:
   image:
     runs-on: ubuntu-latest
@@ -17,12 +20,17 @@ jobs:
       packages: write
       pull-requests: write
     steps:
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@main
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
+        with:
+          egress-policy: audit
+
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@672cf56c8b828e444b6e7906d0ee355c7ec1dea9 # main
         with:
           repository: openstack/ovn-bgp-agent
           ref: 6dae18274b4e8252b20222841f631714692a6c89 # master
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@main
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@672cf56c8b828e444b6e7906d0ee355c7ec1dea9 # main
         with:
           image-name: ovn-bgp-agent
           build-contexts: ovn-bgp-agent=openstack/ovn-bgp-agent
