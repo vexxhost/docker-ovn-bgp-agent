@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: © 2025 VEXXHOST, Inc.
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-FROM ghcr.io/vexxhost/openstack-venv-builder:main@sha256:cac5fdf4a7016b77bb139220f30ad7166bd05db9cc78db0cf9cac1f5ad7510ab AS build
+FROM ghcr.io/vexxhost/openstack-venv-builder:main@sha256:94f1a010570f268c3d444e9b07205f49ffd3462f7927754f102b6f6bdeeb2b86 AS build
 RUN --mount=type=bind,from=ovn-bgp-agent,source=/,target=/src/ovn-bgp-agent,readwrite <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
