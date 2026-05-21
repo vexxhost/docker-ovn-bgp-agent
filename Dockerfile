@@ -1,14 +1,14 @@
 # SPDX-FileCopyrightText: © 2025 VEXXHOST, Inc.
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-FROM ghcr.io/vexxhost/openstack-venv-builder:2025.2@sha256:5f24cc7ff85d26bcd3aa90bc32591e6a9b18b192ae9aa52dcf375df9efdb885c AS build
+FROM ghcr.io/vexxhost/openstack-venv-builder:2025.2@sha256:6897c04fd58a921b3ecd32183392ca80a5bc0d36241be788852f2656b9c8a010 AS build
 RUN --mount=type=bind,from=ovn-bgp-agent,source=/,target=/src/ovn-bgp-agent,readwrite <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/ovn-bgp-agent[frr_k8s]
 EOF
 
-FROM ghcr.io/vexxhost/python-base:2025.2@sha256:f042737595ed9847b99b65d6830b5ace7a5a26aa007229ab3b2a20c27c12cbb2
+FROM ghcr.io/vexxhost/python-base:2025.2@sha256:8121e8ef8d0c10b4eaf056935a1b7dfc076b1fc3ca6440100a92d69f4f22f46c
 RUN \
     groupadd -g 42424 ovn-bgp-agent && \
     useradd -u 42424 -g 42424 -M -d /var/lib/ovn-bgp-agent -s /usr/sbin/nologin -c "Ovn-bgp-agent User" ovn-bgp-agent && \
