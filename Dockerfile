@@ -8,7 +8,7 @@ uv pip install \
         /src/ovn-bgp-agent[frr_k8s]
 EOF
 
-FROM ghcr.io/vexxhost/python-base:main@sha256:b1262c4564076a59a1c5a0c77bc60048ed0206ec47562dfaaa9dc6671781d269
+FROM ghcr.io/vexxhost/python-base:main@sha256:474ed2701b9a439de7806e5a15c555b6f46cdeeb52e6d13208f758bf67bc4e83
 RUN \
     groupadd -g 42424 ovn-bgp-agent && \
     useradd -u 42424 -g 42424 -M -d /var/lib/ovn-bgp-agent -s /usr/sbin/nologin -c "Ovn-bgp-agent User" ovn-bgp-agent && \
