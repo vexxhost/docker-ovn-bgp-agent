@@ -17,12 +17,12 @@ jobs:
       packages: write
       pull-requests: write
     steps:
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@0dcf370eb08b3f884992181348b8c41d7f66c10e # main
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@2244615e3b5ef56a6e83e993ede50ea9c3716cd7 # main
         with:
           repository: openstack/ovn-bgp-agent
           ref: fe0d730b960dd9d0b6731a81bea148b36e63af8d # stable/2025.2
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@0dcf370eb08b3f884992181348b8c41d7f66c10e # main
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@2244615e3b5ef56a6e83e993ede50ea9c3716cd7 # main
         with:
           image-name: ovn-bgp-agent
           build-contexts: ovn-bgp-agent=openstack/ovn-bgp-agent
