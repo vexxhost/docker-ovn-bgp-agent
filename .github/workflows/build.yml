@@ -14,7 +14,7 @@ permissions:
 jobs:
   tox:
     name: tox (${{ matrix.project.repository }})
-    uses: vexxhost/docker-atmosphere/.github/workflows/tox.yml@0dcf370eb08b3f884992181348b8c41d7f66c10e # main
+    uses: vexxhost/docker-atmosphere/.github/workflows/tox.yml@2244615e3b5ef56a6e83e993ede50ea9c3716cd7 # main
     strategy:
       fail-fast: false
       matrix:
