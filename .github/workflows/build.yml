@@ -12,6 +12,19 @@ permissions:
   contents: read
 
 jobs:
+  tox:
+    name: tox (${{ matrix.project.repository }})
+    uses: vexxhost/docker-atmosphere/.github/workflows/tox.yml@5923a8fba3a98cf17e36583cc498d5e70a01c482 # main
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - repository: openstack/ovn-bgp-agent
+            ref: 8c86978a1a2043dab38eaa7566aacecb9025c427 # master
+    with:
+      repository: ${{ matrix.project.repository }}
+      ref: ${{ matrix.project.ref }}
+
   image:
     runs-on: ubuntu-latest
     permissions:
