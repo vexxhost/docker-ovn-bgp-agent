@@ -1,0 +1,32 @@
+From 4c13b2833fe8623963626da27ac244cd91b9d063 Mon Sep 17 00:00:00 2001
+From: Michiel Piscaer <michiel@piscaer.com>
+Date: Fri, 25 Sep 2026 17:54:05 +0200
+Subject: [PATCH] Fix malformed del-vrf line in evpn.py
+
+Fixes the missing opening parenthesis in EvpnBridge.disconnect():
+the 0001 patch introduces 'self.routing_driver.vrf_reconfigure,
+self.evpn_opts, action="del-vrf")' which is invalid Python and
+crashes the agent at import time (stevedore plugin load) with
+SyntaxError: unmatched ')'.
+
+Signed-off-by: Michiel Piscaer <michiel@piscaer.com>
+---
+ ovn_bgp_agent/drivers/openstack/utils/evpn.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ovn_bgp_agent/drivers/openstack/utils/evpn.py b/ovn_bgp_agent/drivers/openstack/utils/evpn.py
+index 4215255..a993ad9 100644
+--- a/ovn_bgp_agent/drivers/openstack/utils/evpn.py
++++ b/ovn_bgp_agent/drivers/openstack/utils/evpn.py
+@@ -124,7 +124,7 @@ class EvpnBridge:
+         # otherwise, frr will throw an error that it can only delete
+         # inactive vrf's
+         LOG.debug('Configure FRR VRF (del)')
+-        self.routing_driver.vrf_reconfigure, self.evpn_opts, action="del-vrf")
++        self.routing_driver.vrf_reconfigure(self.evpn_opts, action="del-vrf")
+ 
+         self._setup_done = False
+ 
+-- 
+2.55.0
+
