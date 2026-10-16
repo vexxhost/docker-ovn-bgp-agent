@@ -25,12 +25,12 @@ jobs:
         with:
           egress-policy: audit
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@d8ddc2c298084f3364e40082a91614cbfc7ded90 # main
+      - uses: vexxhost/docker-atmosphere/.github/actions/checkout@c2a2333f668bfbf131bd2a7aa8c387be80f0ea85 # main
         with:
           repository: openstack/ovn-bgp-agent
           ref: 34ba81f84352f8cd0aaae718b065b9371545fa10 # master
 
-      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@d8ddc2c298084f3364e40082a91614cbfc7ded90 # main
+      - uses: vexxhost/docker-atmosphere/.github/actions/build-image@c2a2333f668bfbf131bd2a7aa8c387be80f0ea85 # main
         with:
           image-name: ovn-bgp-agent
           build-contexts: ovn-bgp-agent=openstack/ovn-bgp-agent
