@@ -3,6 +3,7 @@
 
 FROM ghcr.io/vexxhost/openstack-venv-builder:2024.1@sha256:e4e3d1ba79c1ba43d1d5afea8e882ff04ab250ad51e26b303f12e152b76a4514 AS build
 ENV UV_INDEX=https://packages.vexxhost.com/pypi/openstack/simple/
+ENV UV_INDEX_STRATEGY=unsafe-best-match
 ARG OVN_BGP_AGENT_VERSION=2.1.0+a8e.2.9
 RUN <<EOF bash -xe
 uv pip install \
