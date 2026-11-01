@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: © 2025 VEXXHOST, Inc.
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-FROM ghcr.io/vexxhost/openstack-venv-builder:main@sha256:1391afe1eac679b89def95d654f9e990149f4a919f440de9e94f5bd75b7953f2 AS build
+FROM ghcr.io/vexxhost/openstack-venv-builder:main@sha256:072fc465aaa7e210e09b9b11587dbdd455e9d0669b2aec0bb3443bd174f95842 AS build
 ARG OVN_BGP_AGENT_VERSION=7.0.0+a8e.1.8
 RUN <<EOF bash -xe
 uv pip install \
